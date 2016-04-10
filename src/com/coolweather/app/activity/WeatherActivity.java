@@ -2,6 +2,7 @@ package com.coolweather.app.activity;
 
 
 import com.coolweather.app.R;
+import com.coolweather.app.service.AntoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUitl;
 import com.coolweather.app.util.Utility;
@@ -180,6 +181,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		//在这里启动服务很稳妥，因为如果服务能启动，说明之前
+		//的任务都完成了，那么服务的任务理论上也是可以完成的。
+		Intent intent = new Intent(this, AntoUpdateService.class);
+		startService(intent);
 	}
 	/*public void onBackPressed() {
 		finish();
