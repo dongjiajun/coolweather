@@ -29,7 +29,7 @@ public class CoolWeatherDB {
 	{
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context,
 		DB_NAME, null, VERSION);
-		db = dbHelper.getWritableDatabase();
+		db = dbHelper.getWritableDatabase();//以写入方式获取数据库
 	}
 	
 	/**
@@ -131,7 +131,7 @@ public class CoolWeatherDB {
 				.getColumnIndex("city_code")));
 				city.setProvinceId(provinceId);
 				list.add(city);
-			} while (cursor.moveToNext());
+				} while (cursor.moveToNext());
 		}
 		return list;
 	}
